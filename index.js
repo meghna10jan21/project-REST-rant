@@ -8,22 +8,10 @@ app.engine('jsx', require ('express-react-views').createEngine())
 app.use('/places', require('./controllers/places'))
 
 app.get('/', (req, res) => {
-    let places = [{
-        name: 'H-Thai-ML',
-        city: 'Seattle',
-        state: 'WA',
-        cuisines: 'Thai, Pan-Asian',
-        pic: 'http://placekitten.com/250/250'
-      }, {
-        name: 'Coding Cat Cafe',
-        city: 'Phoenix',
-        state: 'AZ',
-        cuisines: 'Coffee, Bakery',
-        pic: 'http://placekitten.com/250/250'
-      }]
-      
-    res.render('places/index', { places})
+  res.render('places')
 })
+  
+       
 
 app.get('*', (req, res) => {
  res.status(404).send('<h1>404 Page</h1>')
