@@ -2,6 +2,7 @@
 // Modules and Globals
 require('dotenv').config()
 const express = require('express')
+const { set } = require('express/lib/application')
 const methodOverride = require('method-override')
 const places = require('./Models/places')
 
@@ -13,6 +14,7 @@ app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
+
 
 app.use(express.urlencoded({ extended: true }))
 
