@@ -2,9 +2,10 @@
 // Modules and Globals
 require('dotenv').config()
 const express = require('express')
+const app = express()
 //const { set } = require('express/lib/application')
 const methodOverride = require('method-override')
-const places = require('./Models/places')
+const places = require('./models/places')
 
 
 // Express Settings
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
   res.render('places')
 })
 
-router.delete('/:id', (req, res) => {
+app.delete('/:id', (req, res) => {
   let id = Number(req.params.id)
   if (isNaN(id)) {
     res.render('error404')
