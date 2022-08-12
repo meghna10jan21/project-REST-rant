@@ -10,7 +10,8 @@ const placeSchema = new mongoose.Schema({
     type: Number,
     min: [1673, 'Surely not that old?!'],
     max: [new Date().getFullYear(), 'Hey this year is in the future!']
-  }
+  },
+  comments: [{thpe: mongoose.Schema.Types.ObjectId, ref: 'Comment'}]
 })
 
 placeSchema.methods.showEstblished = function() {
