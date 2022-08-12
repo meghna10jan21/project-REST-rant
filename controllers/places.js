@@ -2,16 +2,19 @@ const router = require("express").Router();
 const db = require("../models");
 
 //INDEX
-router.get("/", (req, res) => {
-  db.Place.find()
-    .then((places) => {
-      res.render("places/index", { places });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.render("error404");
-    });
-});
+router.get('/:id', (req, res) => {
+  db.Place.findById(req.params.id)
+  .populate('comments')
+  .then(place => {
+    console.log(place.comments)
+      res.render('places/show', { place })
+  })
+  .catch(err => {
+      console.log('err', err)
+      res.render('error404')
+  })
+})
+
 
 //CREATE
 router.post("/", (req, res) => {
